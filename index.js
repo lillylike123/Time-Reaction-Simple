@@ -1,4 +1,5 @@
 console.log("Script is loaded and running fine!")
+const box = document.getElementById('game');
 
 console.log("Adding waiting class...");
 box.innerText = "wait for Green...";
@@ -6,14 +7,16 @@ box.classList.add('waiting');
 console.log("Class list is nowL", box.classList); 
 
 const delay = Math.floor(Math.random() * 3000) + 2000;
-const box = document.getElementById('game');
 const counterDisplay = document.getElementById('counter-display');
 let startTime;
 let timeout;
 let fastedTime = Infinity;
 let clickCount = 0; 
 
-box.addEventListener('click', () => {
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+        event.preventDefault();
+
     console.log("Current classes:", box.classList);
     if (box.classList.contains('go')) {
 
@@ -46,7 +49,11 @@ box.addEventListener('click', () => {
             startTime = Date.now();
         }, delay);
     }
+}
+
 });
+
+window.focus();
 
 
 
